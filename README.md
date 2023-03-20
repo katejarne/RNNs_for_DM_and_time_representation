@@ -17,4 +17,10 @@ Code is written in python using:
 - Simple pulse copy with time Delay (analysis changing time delay)
 - Output Ramp proporcional to input amplitude. (task Cue-Set-Go) from paper https://doi.org/10.1016/j.neuron.2022.12.016 ((analysis changing slope)
 
+# Pending (currently working to implement):
+
+- Context-dependent integration time.
+- Context-dependent response time.
+- Second task from paper: Measure-Wait-Go (MWG).
+
 
