@@ -12,6 +12,7 @@ It is written in python using:
 
 # Task are:
 - Perceptual Decision making with time delay (analysis changing time of integration or delay)
+- Perceptual Decision making with "Robust" trained with different sizes of integration time.
 - Perceptual Decision making with time ramp
 - Perceptual DM with different integrations times
 - Simple pulse copy with time Delay (analysis changing time delay)
