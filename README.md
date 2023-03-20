@@ -16,5 +16,6 @@ It is written in python using:
 - Perceptual Decision making with different integrations times
 - Perceptual Decision making with time ramp
 - Simple pulse copy with time Delay (analysis changing time delay)
+- Output Ramp proporcional to input amplitude. (task Cue-Set-Go from paper https://doi.org/10.1016/j.neuron.2022.12.016)
 
 
