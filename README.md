@@ -1,7 +1,7 @@
 # Kreso_RNNs_work
 Code, studies and preliminary results
 
-For each task there is a folder including results. To run the code you need to create locally a file called "plots" and other called "weights" and ajust the path correctly for the code location.
+For each task there is a folder including results (plots and .hdf5 files with RNNs weghts to open with load_models_paper.py ). To run the code to train networks you need to create locally a file called "plots" and other called "weights" and ajust the path correctly for the code location. Be aware of the path to the input and output files.
 
 It is written in python using:
 - Matplotlib
