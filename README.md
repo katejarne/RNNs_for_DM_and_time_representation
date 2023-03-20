@@ -1,7 +1,7 @@
 # Kreso_RNNs_work
 Code, studies and preliminary results
 
-For each task there is a folder. To run the code you need to create locally a file called "plots" and other called "weights" and ajust the path correctly for the code location.
+For each task there is a folder including results. To run the code you need to create locally a file called "plots" and other called "weights" and ajust the path correctly for the code location.
 
 It is written in python using:
 - Matplotlib
