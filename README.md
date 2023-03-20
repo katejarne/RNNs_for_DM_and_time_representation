@@ -36,4 +36,6 @@ https://github.com/afrojaakter/FallResearch2021/blob/main/vrnn_classifier_zero_e
 # Ideas for the Analysis:
 
 - Angle between trajectories. 
+- Manifolds.
+- To build the dynamical system using trajectories (trajectories of individual units are alrady avaliable for the thask considered)
 
