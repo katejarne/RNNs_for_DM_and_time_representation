@@ -18,7 +18,7 @@ Code is written in python using:
 - Perceptual Decision making with "Robust" trained with different sizes of integration time (analysis changing time of time delay)
 - Perceptual Decision making with time ramp ((analysis changing slope)
 - Simple pulse copy with time Delay (analysis changing time delay)
-- Output Ramp proportional to input amplitude. (task Cue-Set-Go) from paper https://doi.org/10.1016/j.neuron.2022.12.016 ((analysis changing slope)
+- Output Ramp proportional to input amplitude (task Cue-Set-Go) from paper https://doi.org/10.1016/j.neuron.2022.12.016 ((analysis changing slope)
 
 # Pending (currently working to implement):
 
