@@ -12,9 +12,9 @@ It is written in python using:
 
 # Task are:
 - Perceptual Decision making with time delay (analysis changing time of integration or delay)
-- Perceptual Decision making with "Robust" trained with different sizes of integration time
-- Perceptual Decision making with time ramp
+- Perceptual Decision making with "Robust" trained with different sizes of integration time (analysis changing time of time delay)
+- Perceptual Decision making with time ramp ((analysis changing slope)
 - Simple pulse copy with time Delay (analysis changing time delay)
-- Output Ramp proporcional to input amplitude. (task Cue-Set-Go) from paper https://doi.org/10.1016/j.neuron.2022.12.016
+- Output Ramp proporcional to input amplitude. (task Cue-Set-Go) from paper https://doi.org/10.1016/j.neuron.2022.12.016 ((analysis changing slope)
 
 
