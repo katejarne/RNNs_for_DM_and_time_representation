@@ -19,7 +19,12 @@ Code is written in python using:
 -  (3) Perceptual Decision making with time ramp (analysis changing slope)
 -  (4) Simple pulse copy with time Delay (analysis changing time delay)
 -  (5) Output Ramp proportional to input amplitude (task Cue-Set-Go) from paper https://doi.org/10.1016/j.neuron.2022.12.016 (analysis changing slope)
--  (6) Perceptual Decision making "Long/short" depending on cue signal (21st June 2023) 
+-  (6) Perceptual Decision making "Long/short" depending on cue signal (21st June 2023)
+
+
+# Note:
+Code from task 6) includes the option of generating multiple trajectory plots. The path contains a file to generate the data set, which actually you can run to see how is the dataset used (generate_perceptual_dm), code to generate all plots of network activity (load_models_paper.py), which calls:  net_constraint_create.py and print_status_2_inputs_paper.py (or print_status_all_trayectories.py) depending on what you want to plot and also loop_call.py and recurrent_main_to_loop.py to train new networks in the task.
+The directory contains a subdir called weights, which has inside the trained network that I showed today.
   
 # Pending (currently working to implement):
 
@@ -39,6 +44,3 @@ https://github.com/afrojaakter/FallResearch2021/blob/main/vrnn_classifier_zero_e
 - Manifolds.
 - To build the dynamical system using trajectories (trajectories of individual units are already available for the task considered)
 
-Note:
-Code from task 6) includes the option of generating multiple trajectory plots. The path contains a file to generate the data set, which actually you can run to see how is the dataset used (generate_perceptual_dm), code to generate all plots of network activity (load_models_paper.py), which calls:  net_constraint_create.py and print_status_2_inputs_paper.py (or print_status_all_trayectories.py) depending on what you want to plot and also loop_call.py and recurrent_main_to_loop.py to train new networks in the task.
-The directory contains a subdir called weights, which has inside the trained network that I showed today.
