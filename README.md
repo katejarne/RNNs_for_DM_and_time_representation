@@ -5,11 +5,17 @@ The repository contains code for training Recurrent Neural Networks (RNNs), visu
 Dependencies:
 
 tensorflow → 2.18.0
+
 matplotlib → 3.6.3
+
 numpy → 1.26.4
+
 scipy → 1.11.4
+
 scikit-learn → 1.4.1
+
 h5py → 3.12.1
+
 networkx → 3.4.2
 
 # Code originally shared by Kreso:
