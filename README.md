@@ -1,46 +1,53 @@
-# Kreso_RNNs_work
+# Task-Parametrised Dynamics: How Recurrent Networks encode time and decision making through structured connectivity
 
-Code, studies and preliminary results of the work about time encoding in different neuro-inspired tasks
+The repository contains code for training Recurrent Neural Networks (RNNs), visualising the trained networks (in terms of connectivity or network activity in response to different stimuli), and conducting various analyses. Each function is well documented.
 
-For each task in this study, there is a folder including code and results (plots .png and .hdf5 files with RNNs weights to open with load_models_paper.py). To run the code for training networks you need to create locally a folder called "plots" and another called "weights" and adjust the path correctly for the code location. Be aware of the path of the input and output files. To generate the plots (meaning test the trained networks) it is necessary to create  "plots" output folder.
+Dependencies:
 
-Code is written in python using:
-
-- Matplotlib
-- Numpy 
-- Scipy
-- Scikit learn
-- Keras and Tensorflow
-
-# Tasks considered so far are:
-
--  (1) Perceptual Decision making with time delay (analysis changing time of integration or delay)
--  (2) Perceptual Decision making with "Robust" trained with different sizes of integration time (analysis changing time of time delay)
--  (3) Perceptual Decision making with time ramp (analysis changing slope)
--  (4) Simple pulse copy with time Delay (analysis changing time delay)
--  (5) Output Ramp proportional to input amplitude (task Cue-Set-Go) from paper https://doi.org/10.1016/j.neuron.2022.12.016 (analysis changing slope)
--  (6) Perceptual Decision making "Long/short" depending on cue signal (21st June 2023)
-
-
-# Note:
-Code from task 6) includes the option of generating multiple trajectory plots. The path contains a file to generate the data set, which actually you can run to see how is the dataset used (generate_perceptual_dm), code to generate all plots of network activity (load_models_paper.py), which calls:  net_constraint_create.py and print_status_2_inputs_paper.py (or print_status_all_trayectories.py) depending on what you want to plot and also loop_call.py and recurrent_main_to_loop.py to train new networks in the task.
-The directory contains a subdir called weights, which has inside the trained network that I showed today.
-  
-# Pending (currently working to implement):
-
-- Context-dependent response time.
-- Second task from the paper: Measure-Wait-Go (MWG).
-
-# A draft made based on questions from everybody and some ideas (please comment or modify):
-
-https://docs.google.com/document/d/1ASKTJqKTY3H4RIcuiNdQtsrRj3i2LvAJoFIwp3F3eG0/edit
+tensorflow → 2.18.0
+matplotlib → 3.6.3
+numpy → 1.26.4
+scipy → 1.11.4
+scikit-learn → 1.4.1
+h5py → 3.12.1
+networkx → 3.4.2
 
 # Code originally shared by Kreso:
 https://github.com/afrojaakter/FallResearch2021/blob/main/vrnn_classifier_zero_entry_until_last_step.ipynb
 
-# Ideas for the Analysis:
+**Training Networks:**
+1. To train a set of networks for a specific task, refer to the tasks listed in Table 1 of the paper (Below). Additional tasks are also available in the repository.
 
-- Angle between trajectories. 
-- Manifolds.
-- To build the dynamical system using trajectories (trajectories of individual units are already available for the task considered)
+| Task                                      | Elapsed time represented with       | Figure | Label                                                                                          | Number of time intervals | Integration                                      |
+|-------------------------------------------|--------------------------------------|--------|------------------------------------------------------------------------------------------------------------------|--------------------------|--------------------------------------------------|
+| Simple Delayed Binary Decision Making     | None                                 | 1c     | Simple DM| 1                        | No                                               |
+| Context-dependent Binary Decision Making  | Pulse Amplitude                      | 1d     | Simple DM Long-short                                                                 | 2                        | No                                               |
+| Multi-interval Amplitude-based Decision   | Pulse Amplitude                      | 5      | Simple DM 8 times/ 4 times                                                                                                            | 8                        | No                                               |
+| Multi-interval Distance-based Decision    | Pulse distance                       | 1e     | Simple DM 8 time encoded                                                                                                              | 8                        | No                                               |
+| Time interval comparison task (TICT)      | Comparison between intervals         | Sup.   | Interval compare                                                                                         | 1                        | No                                               |
+| Windowed Integration Decision Making      | None                                 | 1f     | Integral DM       | 1                        | During a fixed window before the decision        |
+| Fixed Integration time Decision Making    | None                                 | 1g     | Integral DM signal keep        | 1                        | During a fixed window (signal continues after)   |
+| Cued Integration time Decision Making     | Cue and Pulse amplitude              | 1h     | Integral DM Cue    | 1                        | During a fixed window before decision (continues)|
 
+To train a set of networks, execute the script `train_loop_main.py`. Specify how many networks you would like to train for the chosen task (vector) and the number of recurrent units (N_rec).
+This script invokes the function `recurrent_main_to_train_loop.py`, where you can set various training parameters. By selecting the corresponding task label, the standard parameters for that task will be loaded. This function calls one of the dataset generators located in the "data_set_generators" directory. The script will create directories (one for each network), containing the iterations of the network's 20 training epochs and a file named `100_final.hdf5`, which represents the final trained network. These directories are saved in the "weights" directory.
+
+2. **Visualising Network Responses:**
+   The repository includes results from the trained networks for each studied task. You can visualise the response of any network to stimuli by opening its corresponding dataset generator using the function `load_RNNs_models_to_plot.py`. The results will be saved in the "plots" directory.
+
+3. **Creating Animations:**
+   To create an animation of the network behaviour for two selected tasks—Context-dependent Binary Decision Making and Windowed Integration Decision Making—use the script `animation_for_rnn_model.py`. The output will be a GIF.
+
+4. **Analysing Generalised Correlations:**
+   To examine the generalised correlation of input weights with the input stimulus, run the script `generalized_correlation_with_input.py`. To analyse the generalised correlation of network activity with the output, execute `generalized_correlation_with_output.py` and select the appropriate network. These scripts support the same tasks mentioned above (Context-dependent Binary Decision Making and Windowed Integration Decision Making), but they can be modified for any task.
+
+5. **Estimating Principal Eigenvalues:**
+   To estimate the principal eigenvalues of all networks stored in the results (the weights folder), run the script `itera_eigen.py`. There are also functions within the "plot_utilities" directory that can be used to visualise the results generated by this script. These functions start with `plot_eigen*py`.
+
+6. **Studying Network Connectivity and Properties:**
+   To analyse the network’s connectivity and properties, run the script `itera_network_node_conn_in_rnn.py` and select the network of interest.
+
+7. **Calculating the Sequentiality Index:**
+   Use the script `intera_SI.py` to calculate the sequentiality index.
+
+Finally, the "plot_utilities" directory contains scripts to generate visualisations for all tasks mentioned in the paper, as well as scripts for visualising normality results (`plot_normality`), the sequentiality index (`plot_SI_task_compare`), and other functions. Each script is accompanied by a description.
