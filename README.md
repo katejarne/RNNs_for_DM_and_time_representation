@@ -21,7 +21,7 @@ networkx → 3.4.2
 **Training Networks:**
 1. To train a set of networks for a specific task, refer to the tasks listed in Table 1 of the paper (Below). Additional tasks are also available in the repository.
 
-| Task                                      | Elapsed time represented with       | Figure | Label                                                                                          | Number of time intervals | Integration                                      |
+| Task                                      | Elapsed time represented with       | Figure | Label in Code                                                                                         | Number of time intervals | Integration                                      |
 |-------------------------------------------|--------------------------------------|--------|------------------------------------------------------------------------------------------------------------------|--------------------------|--------------------------------------------------|
 | Simple Delayed Binary Decision Making     | None                                 | 1c     | Simple DM| 1                        | No                                               |
 | Context-dependent Binary Decision Making  | Pulse Amplitude                      | 1d     | Simple DM Long-short                                                                 | 2                        | No                                               |
