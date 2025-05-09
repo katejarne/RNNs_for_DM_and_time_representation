@@ -35,7 +35,7 @@ https://github.com/afrojaakter/FallResearch2021/blob/main/vrnn_classifier_zero_e
 | Fixed Integration time Decision Making    | None                                 | 1g     | Integral DM signal keep        | 1                        | During a fixed window (signal continues after)   |
 | Cued Integration time Decision Making     | Cue and Pulse amplitude              | 1h     | Integral DM Cue    | 1                        | During a fixed window before decision (continues)|
 
-To train a set of networks, execute the script `train_loop_main.py`. Specify how many networks you would like to train for the chosen task (vector) and the number of recurrent units (N_rec).
+To train a set of networks, execute the script [`train_loop_main.py`](train_loop_main.py). Specify how many networks you would like to train for the chosen task (vector) and the number of recurrent units (N_rec).
 This script invokes the function `recurrent_main_to_train_loop.py`, where you can set various training parameters. By selecting the corresponding task label, the standard parameters for that task will be loaded. This function calls one of the dataset generators located in the "data_set_generators" directory. The script will create directories (one for each network), containing the iterations of the network's 20 training epochs and a file named `100_final.hdf5`, which represents the final trained network. These directories are saved in the "weights" directory.
 
 2. **Visualising Network Responses:**
