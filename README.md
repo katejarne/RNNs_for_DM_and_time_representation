@@ -18,9 +18,6 @@ h5py → 3.12.1
 
 networkx → 3.4.2
 
-# Code originally shared by Kreso:
-https://github.com/afrojaakter/FallResearch2021/blob/main/vrnn_classifier_zero_entry_until_last_step.ipynb
-
 **Training Networks:**
 1. To train a set of networks for a specific task, refer to the tasks listed in Table 1 of the paper (Below). Additional tasks are also available in the repository.
 
@@ -57,3 +54,7 @@ This script invokes the function [`recurrent_main_to_train_loop.py`](recurrent_m
    Use the script [`itera_SI.py`](itera_SI.py) to calculate the sequentiality index.
 
 Finally, the "[`plot_utilities`](plot_utilities)" directory contains scripts to generate visualisations for all tasks mentioned in the paper, as well as scripts for visualising normality results [`plot_normality.py`](`plot_utilities/plot_normality.py`), the sequentiality index [`plot_SI_task_compare.py`](`plot_utilities/plot_SI_task_compare.py`), and other functions. Each script is accompanied by a description.
+
+This work is based on the idea from  Kresimir Josic to study time encoding # Code:
+https://github.com/afrojaakter/FallResearch2021/blob/main/vrnn_classifier_zero_entry_until_last_step.ipynb
+
