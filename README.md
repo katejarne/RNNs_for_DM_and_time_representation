@@ -54,6 +54,6 @@ This script invokes the function [`recurrent_main_to_train_loop.py`](recurrent_m
    To analyse the network’s connectivity and properties, run the script  [`itera_network_node_conn_in_rnn.py`](itera_network_node_conn_in_rnn.py) and select the network of interest.
 
 7. **Calculating the Sequentiality Index:**
-   Use the script [`intera_SI.py`](intera_SI.py) to calculate the sequentiality index.
+   Use the script [`itera_SI.py`](itera_SI.py) to calculate the sequentiality index.
 
 Finally, the "[`plot_utilities`](plot_utilities)" directory contains scripts to generate visualisations for all tasks mentioned in the paper, as well as scripts for visualising normality results (`plot_normality`), the sequentiality index (`plot_SI_task_compare`), and other functions. Each script is accompanied by a description.
