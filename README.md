@@ -23,6 +23,22 @@ networkx → 3.4.2
 **Training Networks:**
 1. To train a set of networks for a specific task, refer to the tasks listed in Table 1 of the paper (Below). Additional tasks are also available in the repository.
 
+| Task Name                           | Parameter varied          | Figure                | Label in Code                 | # Intervals | Integration                                      |
+| :---------------------------------- | :------------------------ | :-------------------: | :---------------------------: | :---------: | :----------------------------------------------- |
+| **Simple Delayed Binary Decision Making** | Stimulus sign           | Figure 1 c)         | Simple DM                     | 1           | No                                               |
+| **Context-dependent Binary Decision Making** | Stimulus amplitude     | Figure 1 d)         | Simple DM Long-short          | 2           | No                                               |
+| **Multi-interval Amplitude-based Decision Making** | Pulse Amplitude    | SI Figure 1         | Simple DM 8 times/4 times     | 8           | No                                               |
+| **Multi-interval Distance-based Decision Making** | Pulse distance      | 1e & SI Figure 2    | Simple DM 8 time encoded      | 8           | No                                               |
+| **Time interval comparison task (TICT)** | Comparison between intervals | SI Figure 3       | Interval compare              | 1           | No                                               |
+| **Windowed Integration Decision Making** | None                | Figure 1 f)         | Integral DM                   | 1           | During a fixed window before the decision        |
+| **Fixed Integration time Decision Making** | None               | Figure 1 g)         | Integral DM signal keep       | 1           | During a fixed window (signal continues after)   |
+| **Cued Integration time Decision Making** | Cue and Pulse amplitude | Figure 1 h)       | Integral DM Cue               | 1           | During a fixed window before decision (continues)|
+
+*Table: Summary of all tasks included in the study.*  
+*Category 1: Simple decisions with single delay*  
+*Category 2: Binary decisions with multiple intervals*  
+*Category 3: Perceptual integration tasks*
+
 | Task Name                           | Parameter varied          | Figure                | Reference                                      | # Intervals | Cue present       |
 | :---------------------------------- | :------------------------ | :-------------------: | :--------------------------------------------: | :---------: | :---------------: |
 | **Simple Delayed Binary Decision Making** | Stimulus sign           | Figure 1 c)         | [Stanislaw, 1999]                            | 1           | No                |
