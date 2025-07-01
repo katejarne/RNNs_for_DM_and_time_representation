@@ -2,7 +2,7 @@
 
 How do recurrent neural networks (RNNs) internally represent elapsed time and initiate i actions after learned delays? To address this question, we trained RNNs on delayed decision-making tasks of increasing complexity: binary decisions, context-dependent decisions with amplitude modulation, and perceptual integration. We analyzed RNN dynamics using eigenvalue spectra, connectivity structure, and population trajectories,  and find that 1) Responses are symmetric for opposing stimtuli in binary classification tasks The same units respond with equal and opposite activation to the two stimuli, reflecting a population code with exchange symmetry, rather than dedicated stimulus-specific subpopulations 2) Distinct dynamical regimes emerge across networks trained on the same task whereby oscillatory dynamics support precise timing and integration supports evidence accumulation; and 3) the neural trajectories aling with the output weights only near decision points (r = 0.25–0.30), revealing a task-driven coordination of representation and readout.  These results show that RNNs can flexibly use either integration or oscillations, depending on the task demands, and highlight how structured connectivity enables diverse solutions to temporal computation problems, consistent with biological principles of degeneracy and functional redundancy.
 
-The repository contains code for the training Recurrent Neural Networks (RNNs), visualising the trained networks (in terms of connectivity or network activity in response to different stimuli), and conducting various analyses. Each function is well documented.
+The repository contains code for training Recurrent Neural Networks (RNNs), visualising the trained networks (in terms of connectivity or network activity in response to different stimuli), and conducting various analyses. Each function is well documented.
 
 Dependencies:
 
@@ -39,32 +39,6 @@ networkx → 3.4.2
 *Category 2: Binary decisions with multiple intervals*  
 *Category 3: Perceptual integration tasks*
 
-| Task Name                           | Parameter varied          | Figure                | Reference                                      | # Intervals | Cue present       |
-| :---------------------------------- | :------------------------ | :-------------------: | :--------------------------------------------: | :---------: | :---------------: |
-| **Simple Delayed Binary Decision Making** | Stimulus sign           | Figure 1 c)         | [Stanislaw, 1999]                            | 1           | No                |
-| **Context-dependent Binary Decision Making** | Stimulus amplitude     | Figure 1 d)         | [Mante et al., 2013]                          | 2           | No                |
-| **Multi-interval Amplitude-based Decision Making** | Pulse Amplitude    | SI Figure 1         | N/A                                           | 8           | No                |
-| **Multi-interval Distance-based Decision Making** | Pulse distance      | 1e & SI Figure 2    | N/A                                           | 8           | No                |
-| **Time interval comparison task (TICT)** | Comparison between intervals | SI Figure 3       | [Diaz et al., 2025]                           | 1           | No                |
-| **Windowed Integration Decision Making** | None                | Figure 1 f)         | [Newsome et al., 1989; Roitman et al., 2002; Kiani et al., 2008] | 1 | During fixed window |
-| **Fixed Integration time Decision Making** | None               | Figure 1 g)         | [Newsome et al., 1989; Roitman et al., 2002; Kiani et al., 2008] | 1 | During fixed window |
-| **Cued Integration time Decision Making** | Cue and Pulse amplitude | Figure 1 h)       | [Newsome et al., 1989; Roitman et al., 2002; Kiani et al., 2008] | 1 | During fixed window |
-
-*Table: Summary of all tasks included in the study.*  
-*Category 1: Simple decisions with single delay*  
-*Category 2: Binary decisions with multiple intervals*  
-*Category 3: Perceptual integration tasks*
-
-| Task                                      | Elapsed time represented with       | Figure | Label in Code                                                                                         | Number of time intervals | Integration                                      |
-|-------------------------------------------|--------------------------------------|--------|------------------------------------------------------------------------------------------------------------------|--------------------------|--------------------------------------------------|
-| Simple Delayed Binary Decision Making     | None                                 | 1c     | Simple DM| 1                        | No                                               |
-| Context-dependent Binary Decision Making  | Pulse Amplitude                      | 1d     | Simple DM Long-short                                                                 | 2                        | No                                               |
-| Multi-interval Amplitude-based Decision   | Pulse Amplitude                      | 5      | Simple DM 8 times/ 4 times                                                                                                            | 8                        | No                                               |
-| Multi-interval Distance-based Decision    | Pulse distance                       | 1e     | Simple DM 8 time encoded                                                                                                              | 8                        | No                                               |
-| Time interval comparison task (TICT)      | Comparison between intervals         | Sup.   | Interval compare                                                                                         | 1                        | No                                               |
-| Windowed Integration Decision Making      | None                                 | 1f     | Integral DM       | 1                        | During a fixed window before the decision        |
-| Fixed Integration time Decision Making    | None                                 | 1g     | Integral DM signal keep        | 1                        | During a fixed window (signal continues after)   |
-| Cued Integration time Decision Making     | Cue and Pulse amplitude              | 1h     | Integral DM Cue    | 1                        | During a fixed window before decision (continues)|
 
 To train a set of networks, execute the script [`train_loop_main.py`](train_loop_main.py). Specify how many networks you would like to train for the chosen task (vector) and the number of recurrent units (N_rec).
 This script invokes the function [`recurrent_main_to_train_loop.py`](recurrent_main_to_train_loop.py), where you can set various training parameters. By selecting the corresponding task label, the standard parameters for that task will be loaded. This function calls one of the dataset generators located in the ["data_set_generators"](data_set_generators) directory. The script will create directories (one for each network), containing the iterations of the network's 20 training epochs and a file named `100_final.hdf5`, which represents the final trained network. These directories are saved in the "weights" directory. Please create a "weights" directory in project folder.
