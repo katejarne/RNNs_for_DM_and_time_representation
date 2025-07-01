@@ -22,6 +22,7 @@ networkx → 3.4.2
 
 **Training Networks:**
 1. To train a set of networks for a specific task, refer to the tasks listed in Table 1 of the paper (Below). Additional tasks are also available in the repository.
+
 | Task Name                           | Parameter varied          | Figure          | Reference                                      | # Intervals | Label in Code           | Integration                                |
 | :---------------------------------- | :------------------------ | :-------------: | :--------------------------------------------: | :---------: | :---------------------: | :----------------------------------------- |
 | **Simple Delayed Binary Decision Making** | Stimulus sign           | Fig 1c        | [Stanislaw, 1999]                            | 1           | Simple DM               | No                                         |
