@@ -1,7 +1,7 @@
-# Full code for the paper: "Task-Parametrised Dynamics: How Recurrent Networks encode time and decision making through structured connectivity"
+# Full code for the paper: "Task-Parametrized Dynamics: Representation of Time and Decisions in Recurrent Neural Networks"
 
-[`https://www.biorxiv.org/content/10.1101/2025.09.15.676356v1`](https://www.biorxiv.org/content/10.1101/2025.09.15.676356v1)
-Abstract:
+[`https://www.biorxiv.org/content/10.1101/2025.09.15.676356v1`](https://www.biorxiv.org/content/10.1101/2025.09.15.676356v1) \\
+Abstract:\\
 How do recurrent neural networks (RNNs) internally represent elapsed time to initiate
 responses after learned delays? To address this question, we trained RNNs on delayed
 decision-making tasks of increasing complexity: binary decisions, context-dependent
