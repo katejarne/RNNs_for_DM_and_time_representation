@@ -1,6 +1,22 @@
 # Full code for the paper: "Task-Parametrised Dynamics: How Recurrent Networks encode time and decision making through structured connectivity"
 
-How do recurrent neural networks (RNNs) internally represent elapsed time and initiate i actions after learned delays? To address this question, we trained RNNs on delayed decision-making tasks of increasing complexity: binary decisions, context-dependent decisions with amplitude modulation, and perceptual integration. We analyzed RNN dynamics using eigenvalue spectra, connectivity structure, and population trajectories,  and find that 1) Responses are symmetric for opposing stimtuli in binary classification tasks The same units respond with equal and opposite activation to the two stimuli, reflecting a population code with exchange symmetry, rather than dedicated stimulus-specific subpopulations 2) Distinct dynamical regimes emerge across networks trained on the same task whereby oscillatory dynamics support precise timing and integration supports evidence accumulation; and 3) the neural trajectories aling with the output weights only near decision points (r = 0.25–0.30), revealing a task-driven coordination of representation and readout.  These results show that RNNs can flexibly use either integration or oscillations, depending on the task demands, and highlight how structured connectivity enables diverse solutions to temporal computation problems, consistent with biological principles of degeneracy and functional redundancy.
+[`https://www.biorxiv.org/content/10.1101/2025.09.15.676356v1`](https://www.biorxiv.org/content/10.1101/2025.09.15.676356v1)
+Abstract:
+How do recurrent neural networks (RNNs) internally represent elapsed time to initiate
+responses after learned delays? To address this question, we trained RNNs on delayed
+decision-making tasks of increasing complexity: binary decisions, context-dependent
+decisions, and perceptual integration. We analyzed RNN dynamics after training using
+eigenvalue spectra, connectivity structure, and population trajectories, and found that 1)
+distinct dynamical regimes emerge across networks trained on the same task whereby
+oscillatory dynamics support precise timing, and integration supports evidence accumu-
+lation, 2) a population-wide representation of time and decision variables emerges rather
+than dedicated sub-populations to tracking time and other task-specific variables; and 3) 
+the neural trajectories align only with the output weights near decision points, as shown
+by trajectory readout correlations, revealing task-driven coordination of precisely timed
+task representation and readout. These results show that RNNs can use either integra-
+tion or oscillations to represent time, and highlight how structured connectivity enables
+diverse solutions to temporal computation problems, consistent with biological principles
+of degeneracy and functional redundancy.
 
 The repository contains code for training Recurrent Neural Networks (RNNs), visualising the trained networks (in terms of connectivity or network activity in response to different stimuli), and conducting various analyses. Each function is well documented.
 
@@ -41,7 +57,7 @@ networkx → 3.4.2
 
 
 To train a set of networks, execute the script [`train_loop_main.py`](train_loop_main.py). Specify how many networks you would like to train for the chosen task (vector) and the number of recurrent units (N_rec).
-This script invokes the function [`recurrent_main_to_train_loop.py`](recurrent_main_to_train_loop.py), where you can set various training parameters. By selecting the corresponding task label, the standard parameters for that task will be loaded. This function calls one of the dataset generators located in the ["data_set_generators"](data_set_generators) directory. The script will create directories (one for each network), containing the iterations of the network's 20 training epochs and a file named `100_final.hdf5`, which represents the final trained network. These directories are saved in the "weights" directory. Please create a "weights" directory in project folder.
+This script invokes the function [`recurrent_main_to_train_loop.py`](recurrent_main_to_train_loop.py), where you can set various training parameters. By selecting the corresponding task label, the standard parameters for that task will be loaded. This function calls one of the dataset generators located in the ["data_set_generators"](data_set_generators) directory. The script will create directories (one for each network), containing the iterations of the network's 20 training epochs and a file named `100_final.hdf5`, which represents the final trained network. These directories are saved in the "weights" directory. Please create a "weights" directory in the project folder.
 
 2. **Visualising Network Responses:**
    The repository includes results from the trained networks for each studied task. You can visualise the response of any network to stimuli by opening its corresponding dataset generator using the function [`load_RNNs_models_to_plot.py`](load_RNNs_models_to_plot.py). The results will be saved in the "plots" directory.
