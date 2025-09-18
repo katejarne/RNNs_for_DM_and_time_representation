@@ -48,9 +48,9 @@ networkx → 3.4.2
 | **Multi-interval Amplitude-based Decision Making** | Pulse Amplitude    | SI Fig 1      | N/A                                           | 8           | Simple DM 8 times/4 times | No                                         |
 | **Multi-interval Distance-based Decision Making** | Pulse distance      | 1e & SI Fig 2 | N/A                                           | 8           | Simple DM 8 time encoded | No                                         |
 | **Time interval comparison task (TICT)** | Comparison between intervals | SI Fig 3     | [Diaz et al., 2025]                           | 1           | Interval compare        | No                                         |
-| **Windowed Integration Decision Making** | None                | Fig 1f        | [Newsome et al., 1989; Roitman et al., 2002; Kiani et al., 2008] | 1 | Integral DM      | During fixed window before decision        |
-| **Fixed Integration time Decision Making** | None               | Fig 1g        | [Newsome et al., 1989; Roitman et al., 2002; Kiani et al., 2008] | 1 | Integral DM signal keep | During fixed window (signal continues after) |
-| **Cued Integration time Decision Making** | Cue and Pulse amplitude | Fig 1h       | [Newsome et al., 1989; Roitman et al., 2002; Kiani et al., 2008] | 1 | Integral DM Cue | During fixed window before decision (continues) |
+| **Windowed Evidence Integration (Perceptual Decision Making)** | None                | Fig 1f        | [Newsome et al., 1989; Roitman et al., 2002; Kiani et al., 2008] | 1 | Integral DM      | During fixed window before decision        |
+| **Continuous Evidence Integration** | None               | Fig 1g        | [Newsome et al., 1989; Roitman et al., 2002; Kiani et al., 2008] | 1 | Integral DM signal keep | During fixed window (signal continues after) |
+| **Cued Evidence Integration** | Cue and Pulse amplitude | Fig 1h       | [Newsome et al., 1989; Roitman et al., 2002; Kiani et al., 2008] | 1 | Integral DM Cue | During fixed window before decision (continues) |
 
 *Table: Summary of all tasks included in the study.*  
 *Category 1: Simple decisions with single delay*  
