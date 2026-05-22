@@ -3,22 +3,8 @@
 [`https://www.biorxiv.org/content/10.1101/2025.09.15.676356v1`](https://www.biorxiv.org/content/10.1101/2025.09.15.676356v1) 
 
 Abstract:
+How do recurrent neural networks (RNNs) internally represent elapsed time to initiate responses after learned delays? To address this question, we trained RNNs on delayed decision-making tasks {with progressively increasing temporal demands, including binary decisions, context-dependent decisions, and perceptual integration. We analyzed trained networks using connectivity statistics, eigenvalue spectra, readout alignment, and low-dimensional population trajectories. Across tasks, networks converged to qualitatively distinct but behaviourally comparable dynamical solutions, including oscillatory and non-oscillatory (ramping/decaying) regimes, consistent with solution degeneracy. Population activity remained low-dimensional and distributed across recurrent units rather than localized to individual neurons. Readout alignment was strongly epoch-dependent: activity evolved largely in the readout-null subspace prior to response generation and became increasingly aligned with the output dimension near decision time. In sign-symmetric tasks, trained networks preserved an approximate sign-flip equivariance inherited from architecture and training symmetry, despite independent noisy perturbations across trials, yielding mirrored population responses across stimulus sign. Together, these results show that temporal and decision-related computations can emerge through multiple dynamical regimes, while maintaining structured low-dimensional representations and comparable behavioural performance, mirroring biological principles of degeneracy and functional redundancy.
 
-How do recurrent neural networks (RNNs) internally represent elapsed time to initiate
-responses after learned delays? To address this question, we trained RNNs on delayed
-decision-making tasks of increasing complexity: binary decisions, context-dependent
-decisions, and perceptual integration. We analyzed RNN dynamics after training using
-eigenvalue spectra, connectivity structure, and population trajectories, and found that 1)
-distinct dynamical regimes emerge across networks trained on the same task whereby
-oscillatory dynamics support precise timing, and integration supports evidence accumu-
-lation, 2) a population-wide representation of time and decision variables emerges rather
-than dedicated sub-populations to tracking time and other task-specific variables; and 3) 
-the neural trajectories align only with the output weights near decision points, as shown
-by trajectory readout correlations, revealing task-driven coordination of precisely timed
-task representation and readout. These results show that RNNs can use either integra-
-tion or oscillations to represent time, and highlight how structured connectivity enables
-diverse solutions to temporal computation problems, consistent with biological principles
-of degeneracy and functional redundancy.
 
 The repository contains code for training Recurrent Neural Networks (RNNs), visualising the trained networks (in terms of connectivity or network activity in response to different stimuli), and conducting various analyses. Each function is well documented.
 
@@ -79,7 +65,15 @@ This script invokes the function [`recurrent_main_to_train_loop.py`](recurrent_m
 7. **Calculating the Sequentiality Index:**
    Use the script [`itera_SI.py`](itera_SI.py) to calculate the sequentiality index.
 
-Finally, the "[`plot_utilities`](plot_utilities)" directory contains scripts to generate visualisations for all tasks mentioned in the paper, as well as scripts for visualising normality results [`plot_normality.py`](`plot_utilities/plot_normality.py`), the sequentiality index [`plot_SI_task_compare.py`](`plot_utilities/plot_SI_task_compare.py`), and other functions. Each script is accompanied by a description.
+The "[`plot_utilities`](plot_utilities)" directory contains scripts to generate visualisations for all tasks mentioned in the paper, as well as scripts for visualising normality results [`plot_normality.py`](`plot_utilities/plot_normality.py`), the sequentiality index [`plot_SI_task_compare.py`](`plot_utilities/plot_SI_task_compare.py`), and other functions. Each script is accompanied by a description.
+
+# Pipeline Overview: RNN Dynamics Classification
+
+The pipeline in the `network_clasification_papeline` folder trains and analyzes recurrent neural networks (RNNs) on the different timing tasks, classifying each network’s internal dynamics into **Oscillatory**, **Ramping/Decaying**, or **Mixed** regimes using a dual spectral‑activity criterion.
+
+[`run_experiment.py`](./network_clasification_papeline/run_experiment.py) is the top‑level launcher. It iterates over predefined tasks (e.g., “Simple Delayed Binary DM”) and weight initializations (`Normal` / `Orthogonal`). For each combination, it calls [`train_ensemble.py`](./network_clasification_papeline/train_ensemble.py), which repeatedly trains independent RNNs (10 replicas by default) until a low training MSE is reached. Trained models are saved together with loss curves and sample predictions in structured subfolders (e.g., `results/Simple_DM_Long-short_Normal/net_00/`).
+
+After training, [`analyze_ensemble_v4.py`](./network_clasification_papeline/analyze_ensemble_v4.py) processes every saved network. It computes a spectral oscillation index (OI) from the recurrent weight matrix’s dominant eigenvalue, and an activity‑based metric: the log10 Peak‑to‑Background Ratio (PBR) and a ramp index (absolute Pearson correlation of PC1 with time). The dual classification requires both criteria to agree for a pure regime; otherwise, the network is labelled `Mixed`. The script generates eigenvalue plots, PSD figures, PC1 traces, and summary tables (CSV, text, LaTeX). Finally, [`recompute_accuracy.py`](./network_clasification_papeline/recompute_accuracy.py) can be run afterwards to recalculate classification accuracy on a fixed test set using a robust response‑window method that excludes neutral trials, and it updates the per‑network statistics files.
 
 This work is based on the idea from  Kresimir Josic to study time encoding # Code:
 https://github.com/afrojaakter/FallResearch2021/blob/main/vrnn_classifier_zero_entry_until_last_step.ipynb
