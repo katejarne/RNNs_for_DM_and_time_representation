@@ -75,6 +75,17 @@ The pipeline in the `network_clasification_papeline` folder trains and analyzes 
 
 After training, [`analyze_ensemble_v4.py`](./network_clasification_papeline/analyze_ensemble_v4.py) processes every saved network. It computes a spectral oscillation index (OI) from the recurrent weight matrix’s dominant eigenvalue, and an activity‑based metric: the log10 Peak‑to‑Background Ratio (PBR) and a ramp index (absolute Pearson correlation of PC1 with time). The dual classification requires both criteria to agree for a pure regime; otherwise, the network is labelled `Mixed`. The script generates eigenvalue plots, PSD figures, PC1 traces, and summary tables (CSV, text, LaTeX). Finally, [`recompute_accuracy.py`](./network_clasification_papeline/recompute_accuracy.py) can be run afterwards to recalculate classification accuracy on a fixed test set using a robust response‑window method that excludes neutral trials, and it updates the per‑network statistics files.
 
+# Pipeline Overview: Principal Angles Analysis (Supplementary Figures S9–S12)
+
+This pipeline, located in the `principal_angles_papeline` folder, computes principal angles between leading PC subspaces of trained RNN populations. It generates the supplementary figures (S9–S12) of the paper, which quantify how neural representations differ across task conditions (positive vs. negative trials, reference vs. multiple intervals/amplitudes). The analysis covers the delayed‑response, multi‑interval, and perceptual decision‑making tasks.
+
+[`principal_angles_analysis_12.py`](./principal_angles_papeline/principal_angles_analysis_12.py) is the main script for the **Simple DM** task. It automatically detects stimulus and decision phases per trial (positive/negative), computes principal angles for each phase (pre‑stimulus, stimulus, intermediate, decision, full trial), and produces bar charts (with jittered individual replica points), heatmaps, and a summary table. It also saves explained variance ratio (EVR) tables and phase verification plots for the first replica (first 3 and last 3 trials).  
+For the **Integral DM** task (perceptual decision‑making), [`principal_angles_analysis_integral_DM.py`](./principal_angles_papeline/principal_angles_analysis_integral_DM.py) uses deterministic phase windows based on fixed task timing (stimulus from t=50 to t=249, decision onset at t=270) instead of auto‑detection.
+
+Two additional scripts handle multi‑condition comparisons:  
+[`principal_angles_analysis_multi_5.py`](./principal_angles_papeline/principal_angles_analysis_multi_5.py) compares a reference condition (amplitude=1, positive sign) against 15 other amplitude‑sign combinations for the **multi‑interval amplitude task** (Fig. S12). It generates separate bar plots, heatmaps, and variance‑explained panels (with 90% threshold line) for PC1–PC3.  
+[`principal_angles_analysis_multi_1_interval_5.py`](./principal_angles_papeline/principal_angles_analysis_multi_1_interval_5.py) does the same for the **multi‑interval distance‑based task** (interval encoding), comparing T20 (reference) against T40, T60, …, T160. All scripts output both PNG and SVG figures, plus EVR and summary tables.
+
 This work is based on the idea from  Kresimir Josic to study time encoding # Code:
 https://github.com/afrojaakter/FallResearch2021/blob/main/vrnn_classifier_zero_entry_until_last_step.ipynb
 
